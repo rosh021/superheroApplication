@@ -13,3 +13,7 @@ const loginRegisterSlice = createSlice({
     },
   },
 });
+const { reducer, actions } = loginRegisterSlice;
+export const { setUser } = actions;
+
+export default reducer;

@@ -4,22 +4,33 @@
 }
 
 .navbar {
-  background-color: blue;
-  color: black;
+  background-color: rgb(60, 60, 77);
+  box-sizing: border-box;
+}
+
+.nav-link {
+  color: white;
+  font-weight: bolder;
 }
 
 .form form {
   margin-top: 6rem;
   padding: 2rem 1rem;
   width: 400px;
-  background-color: rgb(166, 175, 175);
+  color: white;
+  font-weight: bolder;
+  font-size: 23px;
+  background-color: rgba(72, 82, 82, 0.747);
   border-radius: 5px;
-  border: 1px solid rgba(250, 247, 247, 0.836);
-  box-shadow: -5px 5px 5px rgba(180, 180, 180, 0.421);
+  border: 1px solid rgb(250, 247, 247);
+  box-shadow: -5px 5px 5px rgba(180, 180, 180, 0.363);
   margin-bottom: 10px;
 }
 
 .main {
   min-height: 100vh;
   background-color: rgb(179, 166, 166);
+  background-image: url(./assets/superheroes.jpg);
+  max-width: 100%;
+  height: auto;
 }
