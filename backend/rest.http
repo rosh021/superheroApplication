@@ -1,0 +1,24 @@
+
+
+GET http://localhost:8000
+
+
+### User Registration 
+POST http://localhost:8000/api/v1/registerlogin
+Content-Type: application/json
+
+{
+    "fName":"Roshan",
+    "lName":"Bhattarai",
+    "email":"roshan021@gmail.com",
+    "password":"123456789"
+}
+
+### User Login 
+POST http://localhost:8000/api/v1/registerlogin/login
+Content-Type: application/json
+
+{
+    "email":"roshan021@gmail.com",
+    "password": "123456789"
+}
