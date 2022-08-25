@@ -2,3 +2,24 @@
   padding: 0;
   margin: 0;
 }
+
+.navbar {
+  background-color: blue;
+  color: black;
+}
+
+.form form {
+  margin-top: 6rem;
+  padding: 2rem 1rem;
+  width: 400px;
+  background-color: rgb(166, 175, 175);
+  border-radius: 5px;
+  border: 1px solid rgba(250, 247, 247, 0.836);
+  box-shadow: -5px 5px 5px rgba(180, 180, 180, 0.421);
+  margin-bottom: 10px;
+}
+
+.main {
+  min-height: 100vh;
+  background-color: rgb(179, 166, 166);
+}
