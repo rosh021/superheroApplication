@@ -1,7 +1,9 @@
 import { toast } from "react-toastify";
 import { fetchSuperHero } from "../../helpers/axiosHelper";
+import { setSearchSuperHero } from "./Slice";
 
-export const searchSuperHero = (batman) => async (dispatch) => {
-  const result = await fetchSuperHero(batman);
-  dispatch(fetchSuperHero(result));
+export const fetchAllSuperHero = (name) => async (dispatch) => {
+  const result = await fetchSuperHero();
+
+  dispatch(setSearchSuperHero(result));
 };

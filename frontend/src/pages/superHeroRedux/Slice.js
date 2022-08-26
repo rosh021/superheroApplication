@@ -2,18 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   searchSuperHero: {},
+  oneSuperHero: [],
 };
 
-const loginRegisterSlice = createSlice({
+const searchSuperHeroSlice = createSlice({
   name: "superHero",
   initialState,
   reducers: {
     setSearchSuperHero: (state, { payload }) => {
       state.searchSuperHero = payload;
     },
+    setOneSuperHero: (state, { payload }) => {
+      state.oneSuperHero = payload;
+    },
   },
 });
-const { reducer, actions } = loginRegisterSlice;
-export const { setSearchSuperHero } = actions;
+const { reducer, actions } = searchSuperHeroSlice;
+export const { setSearchSuperHero, setOneSuperHero } = actions;
 
 export default reducer;

@@ -1,23 +1,14 @@
 import axios from "axios";
-const apiUrl = "https://superheroapi.com/api/1267095494123616/search/";
+const apiUrl = "https://akabab.github.io/superhero-api/api/all.json";
 const rootUrl = "http://localhost:8000/api/v1";
 const registerEP = rootUrl + "/registerlogin";
 const loginEP = registerEP + "/login";
 
-export const fetchSuperHero = (name) => {
-  try {
-    return axios.get(apiUrl + name);
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const apiCall = async (method, url, data) => {
+const apiCall = async (method, url) => {
   try {
     const response = await axios({
       method,
       url,
-      data,
     });
 
     return response.data;
@@ -27,6 +18,10 @@ const apiCall = async (method, url, data) => {
       message: error.message,
     };
   }
+};
+
+export const fetchSuperHero = async () => {
+  return apiCall("get", apiUrl);
 };
 
 export const registerUser = (obj) => {
