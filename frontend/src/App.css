@@ -3,6 +3,10 @@
   margin: 0;
 }
 
+body {
+  color: white;
+}
+
 .navbar {
   background-color: rgb(60, 60, 77);
   box-sizing: border-box;

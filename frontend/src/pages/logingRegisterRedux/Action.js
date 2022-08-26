@@ -1,4 +1,4 @@
-import { loginUser } from "../helpers/axiosHelper";
+import { loginUser } from "../../helpers/axiosHelper";
 import { toast } from "react-toastify";
 import { setUser } from "./Slice";
 

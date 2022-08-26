@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { loginAction } from "../../pages/Action";
+import { loginAction } from "../../pages/logingRegisterRedux/Action";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();

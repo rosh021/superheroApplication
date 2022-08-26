@@ -1,6 +1,6 @@
 import React from "react";
 import { RegisterForm } from "../../components/register/RegisterForm";
-import { Header } from "../../layout/Header";
+
 import { MainLayout } from "../../layout/MainLayout";
 
 export const RegisterPage = () => {

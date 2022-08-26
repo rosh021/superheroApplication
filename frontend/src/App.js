@@ -1,9 +1,9 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { RegisterPage } from "./pages/register/RegisterPage";
-import { LoginPage } from "./pages/login/LoginPage";
-import { DashboardPage } from "./pages/dashboard/DashboardPage";
+import { RegisterPage } from "./pages/register page/RegisterPage";
+import { LoginPage } from "./pages/login page/LoginPage";
+import { DashboardPage } from "./pages/dashboard page/DashboardPage";
 // import superheros from "./assets/superheroes.jpg";
 
 function App() {

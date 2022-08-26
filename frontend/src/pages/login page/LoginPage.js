@@ -10,7 +10,7 @@ export const LoginPage = () => {
   const { user } = useSelector((state) => state.userStore);
 
   useEffect(() => {
-    user._id && navigate("/dashboard");
+    user?._id && navigate("/dashboard");
   }, [navigate, user]);
   return (
     <MainLayout>

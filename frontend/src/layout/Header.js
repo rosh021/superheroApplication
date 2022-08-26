@@ -22,7 +22,7 @@ export const Header = () => {
             {user._id ? (
               <>
                 <Link to="/" className="nav-link">
-                  Your Favourite
+                  Your Saved
                 </Link>
                 <Link to="/register" className="nav-link">
                   Logout
