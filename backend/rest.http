@@ -22,3 +22,8 @@ Content-Type: application/json
     "email":"roshanbhattarai021@gmail.com",
     "password": "123456"
 }
+
+### Store Favorite Super Hero
+
+POST http://localhost:8000/api/v1/favourite
+

@@ -5,6 +5,7 @@ import cors from "cors";
 const PORT = process.env.PORT || 8000;
 
 app.use(cors());
+
 app.use(express.json());
 
 // database Connection
@@ -14,8 +15,10 @@ databaseConnection();
 // APIS
 
 import registerLoginRouter from "./src/routers/registerlogin.js";
+import favoriteRouter from "./src/routers/favoriteRouter.js";
 
 app.use("/api/v1/registerlogin", registerLoginRouter);
+app.use("/api/v1/favorite", favoriteRouter);
 
 app.get("/", (req, res) => {
   res.json({ message: "You are in server Endpoint" });

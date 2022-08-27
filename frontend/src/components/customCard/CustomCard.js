@@ -10,6 +10,10 @@ import {
 import { toast } from "react-toastify";
 import Card from "react-bootstrap/Card";
 import { CustomModel } from "../model/Model";
+import {
+  fetchAllSuperHero,
+  saveMySuperHero,
+} from "../../pages/superHeroRedux/Action";
 
 export const CustomCard = () => {
   const dispatch = useDispatch();
@@ -33,6 +37,7 @@ export const CustomCard = () => {
     }
     dispatch(setFavorite(data));
     toast.success("Added to your Favorite");
+    dispatch(saveMySuperHero(data));
   };
 
   return oneSuperHero.id ? (
