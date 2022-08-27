@@ -2,7 +2,7 @@
   background-color: antiquewhite;
   height: auto;
   margin-top: 100px;
-
+  height: 800px;
   width: 800px;
   display: flex;
   justify-content: center;
@@ -37,6 +37,7 @@
   margin-top: 50px;
   margin-bottom: 10px;
   width: 20rem;
+  /* height: 700px; */
   box-sizing: border-box;
 
   background-color: rgba(72, 82, 82, 0.747);

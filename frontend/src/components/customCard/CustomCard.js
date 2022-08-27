@@ -1,40 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  setShowModal,
+  setKnowTheClick,
+} from "../../pages/superHeroRedux/Slice";
 
 import Card from "react-bootstrap/Card";
+import { CustomModel } from "../model/Model";
 
 export const CustomCard = () => {
   const dispatch = useDispatch();
 
-  const { oneSuperHero } = useSelector((state) => state.superHero);
+  const { oneSuperHero, showModal } = useSelector((state) => state.superHero);
+  const [modelData, setModelData] = useState({});
 
-  return (
+  const showInfo = (info) => {
+    // setModelData(oneSuperHero?.info);
+    console.log(info);
+    // dispatch(setShowModal(true));
+  };
+
+  const handelOnClick = (e) => {
+    const result = e.target.innerText;
+    setModelData(result);
+    dispatch(setKnowTheClick(result));
+    dispatch(setShowModal(true));
+  };
+
+  return oneSuperHero.id ? (
     <Card style={{ height: "500px" }} className="customCard">
-      {oneSuperHero.map((item, i) => {
-        return (
-          <>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Body>
-              <Card.Title></Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>Cras justo odio</ListGroup.Item>
-              <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-              <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-            </ListGroup>
-            <Card.Body>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
-          </>
-        );
-      })}
+      <CustomModel show={showModal} modelData={modelData}></CustomModel>
+      <Card.Img
+        variant="top"
+        src={oneSuperHero?.images.sm}
+        className="CardImage"
+      />
+      <Card.Body>
+        <Card.Title>{oneSuperHero?.name}</Card.Title>
+      </Card.Body>
+      <ListGroup className="list-group-flush">
+        <ListGroup.Item className="link" onClick={handelOnClick}>
+          powerstats
+        </ListGroup.Item>
+        <ListGroup.Item className="link" onClick={handelOnClick}>
+          appearance
+        </ListGroup.Item>
+        <ListGroup.Item className="link" onClick={handelOnClick}>
+          biography
+        </ListGroup.Item>
+        <ListGroup.Item className="link" onClick={handelOnClick}>
+          work
+        </ListGroup.Item>
+      </ListGroup>
     </Card>
+  ) : (
+    <h1>Search To get the Information About your favorite Super Hero</h1>
   );
 };

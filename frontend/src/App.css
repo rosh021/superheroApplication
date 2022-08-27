@@ -41,4 +41,17 @@ body {
 
 .customCard {
   color: black;
+  /* height: 100px; */
+}
+
+.CardImage {
+  height: 300px;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.model {
+  color: black;
 }

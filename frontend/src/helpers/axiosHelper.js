@@ -4,7 +4,24 @@ const rootUrl = "http://localhost:8000/api/v1";
 const registerEP = rootUrl + "/registerlogin";
 const loginEP = registerEP + "/login";
 
-const apiCall = async (method, url) => {
+const apiCall = async (method, url, data) => {
+  try {
+    const response = await axios({
+      method,
+      url,
+      data,
+    });
+
+    return response.data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
+
+const fetchSuperHeros = async (method, url) => {
   try {
     const response = await axios({
       method,
@@ -19,9 +36,8 @@ const apiCall = async (method, url) => {
     };
   }
 };
-
 export const fetchSuperHero = async () => {
-  return apiCall("get", apiUrl);
+  return fetchSuperHeros("get", apiUrl);
 };
 
 export const registerUser = (obj) => {
@@ -29,5 +45,6 @@ export const registerUser = (obj) => {
 };
 
 export const loginUser = (obj) => {
+  console.log(obj);
   return apiCall("post", loginEP, obj);
 };
