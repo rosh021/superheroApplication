@@ -112,7 +112,7 @@ export const CustomModel = ({ modelData, ...rest }) => {
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={() => dispatch(setShowModal(false))}>Close</Button>
-        <Button>Update</Button>
+        {modelData === "powerstats" && <Button>Update and Save</Button>}
       </Modal.Footer>
     </Modal>
   );

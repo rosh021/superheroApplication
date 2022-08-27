@@ -1,6 +1,6 @@
 
 
-GET http://localhost:8000
+GET http://superheroapi.com/api/1267095494123616/search/batman
 
 
 ### User Registration 

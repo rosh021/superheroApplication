@@ -5,6 +5,7 @@ const initialState = {
   oneSuperHero: [],
   knowTheClick: [],
   showModal: false,
+  favorite: [],
 };
 
 const searchSuperHeroSlice = createSlice({
@@ -23,6 +24,16 @@ const searchSuperHeroSlice = createSlice({
     setShowModal: (state, { payload }) => {
       state.showModal = payload;
     },
+    setFavorite: (state, { payload }) => {
+      const objExist = state.favorite.filter((item) => item._id === payload.id);
+      if (objExist.length) {
+        return;
+      }
+      const newSet = [...state.favorite, payload];
+
+      localStorage.setItem("favorites", JSON.stringify(newSet));
+      state.favorite = newSet;
+    },
   },
 });
 const { reducer, actions } = searchSuperHeroSlice;
@@ -31,6 +42,7 @@ export const {
   setOneSuperHero,
   setShowModal,
   setKnowTheClick,
+  setFavorite,
 } = actions;
 
 export default reducer;

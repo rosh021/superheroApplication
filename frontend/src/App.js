@@ -4,19 +4,21 @@ import { ToastContainer } from "react-toastify";
 import { RegisterPage } from "./pages/register page/RegisterPage";
 import { LoginPage } from "./pages/login page/LoginPage";
 import { DashboardPage } from "./pages/dashboard page/DashboardPage";
-// import superheros from "./assets/superheroes.jpg";
+import { Favorite } from "./pages/favorite/Favorite";
+
 
 function App() {
   return (
     <div
       className="App"
-      // style={{ backgroundImage: "url(" + { superheros } + ")" }}
+   
     >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/favorite" element={<Favorite />} />
         </Routes>
       </BrowserRouter>
 

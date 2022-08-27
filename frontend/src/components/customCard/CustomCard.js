@@ -5,28 +5,34 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   setShowModal,
   setKnowTheClick,
+  setFavorite,
 } from "../../pages/superHeroRedux/Slice";
-
+import { toast } from "react-toastify";
 import Card from "react-bootstrap/Card";
 import { CustomModel } from "../model/Model";
 
 export const CustomCard = () => {
   const dispatch = useDispatch();
 
-  const { oneSuperHero, showModal } = useSelector((state) => state.superHero);
+  const { oneSuperHero, showModal, favorite } = useSelector(
+    (state) => state.superHero
+  );
   const [modelData, setModelData] = useState({});
-
-  const showInfo = (info) => {
-    // setModelData(oneSuperHero?.info);
-    console.log(info);
-    // dispatch(setShowModal(true));
-  };
 
   const handelOnClick = (e) => {
     const result = e.target.innerText;
     setModelData(result);
     dispatch(setKnowTheClick(result));
     dispatch(setShowModal(true));
+  };
+
+  const SaveToFavorite = (data) => {
+    const objExist = favorite.filter((item) => item.id === data.id);
+    if (objExist.length) {
+      return toast.error("OOPS !! Already Added to Favorite");
+    }
+    dispatch(setFavorite(data));
+    toast.success("Added to your Favorite");
   };
 
   return oneSuperHero.id ? (
@@ -54,6 +60,9 @@ export const CustomCard = () => {
           work
         </ListGroup.Item>
       </ListGroup>
+      <Button onClick={() => SaveToFavorite(oneSuperHero)}>
+        Add to Favorite
+      </Button>
     </Card>
   ) : (
     <h1>Search To get the Information About your favorite Super Hero</h1>
