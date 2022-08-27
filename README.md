@@ -51,3 +51,42 @@ All the favorite api will follow: `{RootUrl}/favorite`
 | 2.  | `/`    | POST   | Send new favorite info to database                     |
 | 3.  | `/_id` | PATCH  | update favorite superhero, i.e powerstats of superhero |
 | 4.  | `/`    | DELETE | delete singe favorite superhero from database          |
+
+
+### Application pages 
+
+This is MultiPages application build in react. The pages are:
+- Login Page
+- Register Page
+- Dashboard Page
+- Saved Page
+
+### Features Added
+
+Login and Registration features is added to make this application more authentic.  
+
+### Assumptions 
+
+- User need to Register before using this application. All the register users data(i.e firstName, lastName, email, password) are stored in database, password of users are encrypted and stored.
+- After registration, Users are navigated to login page.  Users need to used correct email and password for login, the email and password which is used for registration.
+- After successful login, user data(i.e email, firstName, lastName, _id) is stored in session storages and users are navigated to dashboard.
+- In dashboard, Users need to search for their super hero name. The name of super hero need to started with capital latter and spelling of super hero need to be correct. After that, users is displayed with data(i.e image, name, powerstats, appearance, biography and work) of super hero.
+- "Add to Favorite" button is displayed, this button will save the your super hero as a favorite in database.
+- "Your Saved" tab in navbar, will displayed all the saved super hero.
+- In "Saved" page of application, you can edit the powerstats of your favorite super hero and update in database.
+- In "Saved" page in application, have "Remove from favorite", when you click it, your saved favorite super hero will remove from database and update.
+- "Logout" tab in navbar, will logout the user from any page (i.e. dashboardPage or savedPage) and navigated to login page. All the user data will be removed from Session storage. User need to login again.
+
+
+### Technical Challenges 
+
+I cannot fetch the data from given api, so i have used the different api for getting the data. 
+
+
+### Application Features
+
+- User friendly 
+- Mobile Responsive 
+- CRUD operation 
+
+
