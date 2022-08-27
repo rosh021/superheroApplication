@@ -5,7 +5,7 @@ import { setShowModal } from "../../pages/superHeroRedux/Slice";
 import { UpdatePowerState } from "../updatePowerState/UpdatePowerState";
 import { CustomModel } from "./CustomeModel";
 
-export const CharacterFeatures = ({ modelData, ...rest }) => {
+export const CharacterFeatures = ({ modelData, ...rest }, isClicked) => {
   const dispatch = useDispatch();
   const { oneSuperHero } = useSelector((state) => state.superHero);
 

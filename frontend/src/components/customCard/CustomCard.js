@@ -22,8 +22,8 @@ export const CustomCard = (fun) => {
   const { oneSuperHero, showModal, favorite } = useSelector(
     (state) => state.superHero
   );
+
   const [modelData, setModelData] = useState({});
-  const [editPower, setEditPower] = useState(false);
 
   const handelOnClick = (e) => {
     const result = e.target.innerText;
@@ -39,82 +39,89 @@ export const CustomCard = (fun) => {
       return toast.error("OOPS !! Already Added to Favorite");
     }
     dispatch(setFavorite(data));
+
     toast.success("Added to your Favorite");
     dispatch(saveMySuperHero(data));
   };
 
   return (
-    <>
-      {fun === true ? (
-        favorite?.map((item, i) => (
-          <Card style={{ height: "500px" }} className="customCard">
-            <CharacterFeatures
-              show={showModal}
-              modelData={modelData}
-            ></CharacterFeatures>
-            <Card.Img
-              variant="top"
-              src={item?.images?.sm}
-              className="CardImage"
-            />
-            <Card.Body>
-              <Card.Title>{item?.name}</Card.Title>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item className="link" onClick={handelOnClick}>
-                powerstats
-              </ListGroup.Item>
-              <ListGroup.Item className="link" onClick={handelOnClick}>
-                appearance
-              </ListGroup.Item>
-              <ListGroup.Item className="link" onClick={handelOnClick}>
-                biography
-              </ListGroup.Item>
-              <ListGroup.Item className="link" onClick={handelOnClick}>
-                work
-              </ListGroup.Item>
-            </ListGroup>
-            <Button onClick={() => SaveToFavorite(oneSuperHero)}>
-              Remove from Favorite
-            </Button>
-          </Card>
-        ))
-      ) : oneSuperHero?.id ? (
-        <Card style={{ height: "500px" }} className="customCard">
-          <CharacterFeatures modelData={modelData}></CharacterFeatures>
-          <Card.Img
-            variant="top"
-            src={oneSuperHero?.images?.sm}
-            className="CardImage"
-          />
-          <Card.Body>
-            <Card.Title>{oneSuperHero?.name}</Card.Title>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroup.Item
-              className="link"
-              value="editPower"
-              onClick={handelOnClick}
-            >
-              powerstats
-            </ListGroup.Item>
-            <ListGroup.Item className="link" onClick={handelOnClick}>
-              appearance
-            </ListGroup.Item>
-            <ListGroup.Item className="link" onClick={handelOnClick}>
-              biography
-            </ListGroup.Item>
-            <ListGroup.Item className="link" onClick={handelOnClick}>
-              work
-            </ListGroup.Item>
-          </ListGroup>
-          <Button onClick={() => SaveToFavorite(oneSuperHero)}>
-            Add to Favorite
-          </Button>
-        </Card>
-      ) : (
-        <h1>Please type name of the super hero you want to find</h1>
-      )}
-    </>
+    <div>
+      {fun === true
+        ? favorite?.map((item, id) => {
+            return (
+              <>
+                <Card
+                  key={id}
+                  style={{ height: "500px" }}
+                  className="customCard"
+                >
+                  <CharacterFeatures
+                    show={showModal}
+                    modelData={modelData}
+                  ></CharacterFeatures>
+                  <Card.Img
+                    variant="top"
+                    src={item?.images?.sm}
+                    className="CardImage"
+                  />
+                  <Card.Body>
+                    <Card.Title>{item?.name}</Card.Title>
+                  </Card.Body>
+                  <ListGroup className="list-group-flush">
+                    <ListGroup.Item className="link" onClick={handelOnClick}>
+                      powerstats
+                    </ListGroup.Item>
+                    <ListGroup.Item className="link" onClick={handelOnClick}>
+                      appearance
+                    </ListGroup.Item>
+                    <ListGroup.Item className="link" onClick={handelOnClick}>
+                      biography
+                    </ListGroup.Item>
+                    <ListGroup.Item className="link" onClick={handelOnClick}>
+                      work
+                    </ListGroup.Item>
+                  </ListGroup>
+                  <Button onClick={() => SaveToFavorite(oneSuperHero)}>
+                    Remove from Favorite
+                  </Button>
+                </Card>
+              </>
+            );
+          })
+        : oneSuperHero?.id && (
+            <Card style={{ height: "500px" }} className="customCard">
+              <CharacterFeatures modelData={modelData}></CharacterFeatures>
+              <Card.Img
+                variant="top"
+                src={oneSuperHero?.images?.sm}
+                className="CardImage"
+              />
+              <Card.Body>
+                <Card.Title>{oneSuperHero?.name}</Card.Title>
+              </Card.Body>
+              <ListGroup className="list-group-flush">
+                <ListGroup.Item
+                  className="link"
+                  value="editPower"
+                  onClick={handelOnClick}
+                >
+                  powerstats
+                </ListGroup.Item>
+                <ListGroup.Item className="link" onClick={handelOnClick}>
+                  appearance
+                </ListGroup.Item>
+                <ListGroup.Item className="link" onClick={handelOnClick}>
+                  biography
+                </ListGroup.Item>
+                <ListGroup.Item className="link" onClick={handelOnClick}>
+                  work
+                </ListGroup.Item>
+              </ListGroup>
+              <Button onClick={() => SaveToFavorite(oneSuperHero)}>
+                Add to Favorite
+              </Button>
+            </Card>
+          )}
+    </div>
   );
 };

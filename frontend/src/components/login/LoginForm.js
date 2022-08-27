@@ -3,10 +3,16 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import { loginAction } from "../../pages/logingRegisterRedux/Action";
+import { loginUser } from "../../helpers/axiosHelper";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
+import { setUser } from "../../pages/logingRegisterRedux/Slice";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigator = useNavigate();
   const [formData, setFormData] = useState({});
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -15,16 +21,17 @@ export const LoginForm = () => {
     });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-
     dispatch(loginAction(formData));
+    navigator("/dashboard");
   };
 
   return (
     <Form onSubmit={handleOnSubmit}>
       <h3 className="text-center">Welcome Back</h3>
       <hr />
+
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
         <Form.Control

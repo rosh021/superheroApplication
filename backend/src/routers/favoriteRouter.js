@@ -1,6 +1,26 @@
 import express from "express";
-import { getOneFav, saveFav, updateFav } from "../models/favModel/FavModel.js";
+import {
+  getFav,
+  getFavById,
+  saveFav,
+  updateFav,
+} from "../models/favModel/FavModel.js";
 const router = express.Router();
+
+router.get("/:id?", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = id ? await getFavById(id) : await getFav();
+
+    res.json({
+      status: "success",
+      message: "Here are Favorite List",
+      result,
+    });
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.post("/", async (req, res, next) => {
   try {
@@ -22,8 +42,9 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.put("/", async (req, res, nex) => {
+router.put("/", async (req, res, next) => {
   try {
+    console.log(req.body);
     const { id, ...rest } = req.body;
 
     const favSuperHero = await getOneFav({ id });

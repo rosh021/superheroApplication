@@ -1,5 +1,5 @@
 * {
-  padding: 0;
+  padding: auto;
   margin: 0;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 .form form {
-  margin-top: 6rem;
+  margin-top: 10rem;
   padding: 2rem 1rem;
   width: 400px;
   color: white;
@@ -31,17 +31,27 @@ body {
   margin-bottom: 10px;
 }
 
-.main {
+.mainLayout {
   min-height: 100vh;
   background-color: rgb(179, 166, 166);
   background-image: url(./assets/superheroes.jpg);
+  background-position: cover;
+  background-repeat: no-repeat;
   max-width: 100%;
   height: auto;
 }
 
+.dashboardPage {
+  min-height: 100vh;
+  width: 100%;
+  /* background-color: aqua; */
+  background-image: url(./assets/photo.jpg);
+}
+
 .customCard {
   color: black;
-  /* height: 100px; */
+
+  /* height: auto; */
 }
 
 .CardImage {
@@ -57,6 +67,6 @@ body {
 }
 
 .fav {
-  display: flex;
+  /* display: flex; */
   /* margin-top: 10px; */
 }

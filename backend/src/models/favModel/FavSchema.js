@@ -24,4 +24,4 @@ const favSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("superhero", favSchema);
+export default mongoose.model("favoriteSuperHero", favSchema);

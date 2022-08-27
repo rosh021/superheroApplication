@@ -39,7 +39,7 @@ export const Dashboard = () => {
   return (
     <section className="dashboard">
       <div className="mainBody ">
-        <h3 className="mt-1">Search Your SuperHero by Name</h3>
+        <h3 className="mt-5">Search Your SuperHero by Name</h3>
         <div className="nameSearch mt-3">
           <input
             type="text"

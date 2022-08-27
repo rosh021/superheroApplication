@@ -3,14 +3,14 @@ import { toast } from "react-toastify";
 import { setUser } from "./Slice";
 
 export const loginAction = (obj) => async (dispatch) => {
-  const resultPromise = loginUser(obj);
+  const data = await loginUser(obj);
 
-  toast.promise(resultPromise, {
-    pending: "Please Wait....",
-  });
+  const { status, message, result } = data;
 
-  const { status, message, result } = await resultPromise;
+  if (status === "success") {
+    window.sessionStorage.setItem("user", JSON.stringify(data.result));
 
+    dispatch(setUser(data));
+  }
   toast[status](message);
-  status === "success" && dispatch(setUser(result));
 };

@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllFavorite } from "../../pages/superHeroRedux/Action";
 import { CustomCard } from "../customCard/CustomCard";
 
 export const Favorite = () => {
-  const [isClicked, isSetClicked] = useState(false);
+  const [isClicked, isSetClicked] = useState(true);
+  const dispatch = useDispatch();
   const { favorite } = useSelector((state) => state.superHero);
-  console.log(favorite);
+  useEffect(() => {
+    dispatch(fetchAllFavorite());
+  }, [favorite]);
 
   return (
     <div>

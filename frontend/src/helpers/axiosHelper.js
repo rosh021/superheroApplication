@@ -37,7 +37,7 @@ const fetchSuperHeros = async (method, url) => {
     };
   }
 };
-export const fetchSuperHero = async () => {
+export const fetchSuperHero = () => {
   return fetchSuperHeros("get", apiUrl);
 };
 
@@ -46,13 +46,15 @@ export const registerUser = (obj) => {
 };
 
 export const loginUser = (obj) => {
-  console.log(obj);
   return apiCall("post", loginEP, obj);
 };
 
 // ==================== Save Favorite in DataBase===================
 
 export const saveFavorite = (obj) => {
-  console.log(obj);
   return apiCall("post", favoriteEP, obj);
+};
+
+export const getFavoriteList = () => {
+  return apiCall("get", favoriteEP);
 };
