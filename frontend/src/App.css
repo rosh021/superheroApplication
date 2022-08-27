@@ -55,3 +55,8 @@ body {
 .model {
   color: black;
 }
+
+.fav {
+  display: flex;
+  /* margin-top: 10px; */
+}
