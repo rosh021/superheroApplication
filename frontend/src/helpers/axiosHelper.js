@@ -1,6 +1,9 @@
 import axios from "axios";
 const apiUrl = "https://akabab.github.io/superhero-api/api/all.json";
-const rootUrl = "http://localhost:8000/api/v1";
+const rootUrl =
+  process.env.NODE_ENV === "production"
+    ? "/api/v1/"
+    : "http://localhost:8000/api/v1/";
 const registerEP = rootUrl + "/registerlogin";
 const loginEP = registerEP + "/login";
 const favoriteEP = rootUrl + "/favorite";
