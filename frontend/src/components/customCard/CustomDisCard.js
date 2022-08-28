@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useDispatch, useSelector } from "react-redux";
 import {
   setShowModal,
   setKnowTheClick,
-  setFavorite,
+  setOneSuperHero,
 } from "../../pages/superHeroRedux/Slice";
 import { toast } from "react-toastify";
 import Card from "react-bootstrap/Card";
 
-import {
-  fetchAllSuperHero,
-  saveMySuperHero,
-} from "../../pages/superHeroRedux/Action";
+import { saveMySuperHero } from "../../pages/superHeroRedux/Action";
 import { CharacterFeatures } from "../model/characterFeatures";
-import { CustomCard } from "./CustomCard";
 
-export const CustomDisCard = () => {
+export const CustomDisCard = ({ oneSuperHero, isEditable }) => {
   const dispatch = useDispatch();
-  const { oneSuperHero, favorite } = useSelector((state) => state.superHero);
 
-  const [modelData, setModelData] = useState({});
+  const { favorite } = useSelector((state) => state.superHero);
 
   const handelOnClick = (e) => {
     const result = e.target.innerText;
 
-    setModelData(result);
     dispatch(setKnowTheClick(result));
+    dispatch(setOneSuperHero(oneSuperHero));
     dispatch(setShowModal(true));
   };
 
   const SaveToFavorite = (data) => {
-    console.log(data);
     const objExist = favorite.filter((item) => item.id === data.id);
     if (objExist.length) {
       return toast.error("OOPS !! Already Added to Favorite");
@@ -44,8 +38,11 @@ export const CustomDisCard = () => {
 
   return (
     <div>
-      <Card style={{ height: "500px" }} className="customCard">
-        <CharacterFeatures modelData={modelData}></CharacterFeatures>
+      <Card style={{ margin: "5px", width: "18rem" }} className="customCard">
+        <CharacterFeatures
+          isEditable={isEditable}
+          oneSuperHero={oneSuperHero}
+        ></CharacterFeatures>
         <Card.Img
           variant="top"
           src={oneSuperHero?.images?.sm}
@@ -53,28 +50,31 @@ export const CustomDisCard = () => {
         />
         <Card.Body>
           <Card.Title>{oneSuperHero?.name}</Card.Title>
+
+          <ListGroup className="list-group-flush">
+            <ListGroup.Item
+              className="link"
+              value="editPower"
+              onClick={handelOnClick}
+            >
+              powerstats
+            </ListGroup.Item>
+            <ListGroup.Item className="link" onClick={handelOnClick}>
+              appearance
+            </ListGroup.Item>
+            <ListGroup.Item className="link" onClick={handelOnClick}>
+              biography
+            </ListGroup.Item>
+            <ListGroup.Item className="link" onClick={handelOnClick}>
+              work
+            </ListGroup.Item>
+          </ListGroup>
+          {!isEditable && (
+            <Button onClick={() => SaveToFavorite(oneSuperHero)}>
+              Add to Favorite
+            </Button>
+          )}
         </Card.Body>
-        <ListGroup className="list-group-flush">
-          <ListGroup.Item
-            className="link"
-            value="editPower"
-            onClick={handelOnClick}
-          >
-            powerstats
-          </ListGroup.Item>
-          <ListGroup.Item className="link" onClick={handelOnClick}>
-            appearance
-          </ListGroup.Item>
-          <ListGroup.Item className="link" onClick={handelOnClick}>
-            biography
-          </ListGroup.Item>
-          <ListGroup.Item className="link" onClick={handelOnClick}>
-            work
-          </ListGroup.Item>
-        </ListGroup>
-        <Button onClick={() => SaveToFavorite(oneSuperHero)}>
-          Add to Favorite
-        </Button>
       </Card>
     </div>
   );

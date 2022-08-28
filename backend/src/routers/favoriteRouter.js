@@ -3,7 +3,7 @@ import {
   getFav,
   getFavById,
   saveFav,
-  updateFav,
+  updateFavById,
   deleteFavBYId,
 } from "../models/favModel/FavModel.js";
 const router = express.Router();
@@ -48,13 +48,10 @@ router.post("/", async (req, res, next) => {
 router.put("/", async (req, res, next) => {
   try {
     console.log(req.body);
-    const { id, ...rest } = req.body;
+    const { _id, ...powerstats } = req.body;
 
-    const favSuperHero = await getOneFav({ id });
-
-    if (favSuperHero?.id) {
-      const filter = { id: favSuperHero.id };
-      const updateFav = await updateFav(filter, rest);
+    if (_id) {
+      const updateFav = await updateFavById(_id, powerstats);
       if (updateFav?.id) {
         return res.json({
           status: "success",
@@ -72,15 +69,10 @@ router.put("/", async (req, res, next) => {
   }
 });
 
-router.delete("/", async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
+  console.log(req.params);
   try {
-    const id = req.body;
-    console.log(id);
-
-    const { authorization } = req.headers;
-    console.log(authorization);
-
-    const result = await deleteFavBYId(id, authorization);
+    const result = await deleteFavBYId(id);
 
     result?.deletedCount
       ? res.json({
@@ -92,10 +84,7 @@ router.delete("/", async (req, res, next) => {
           message: "unable to delete your superhero",
         });
   } catch (error) {
-    res.json({
-      status: "error",
-      message: error.message,
-    });
+    next(error);
   }
 });
 

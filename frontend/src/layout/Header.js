@@ -32,6 +32,9 @@ export const Header = () => {
           <Nav className="ms-auto">
             {user?.result?._id ? (
               <>
+                <Link to="/dashboard" className="nav-link">
+                  Dashboard
+                </Link>
                 <Link to="/favorite" className="nav-link">
                   Your Saved
                 </Link>

@@ -7,7 +7,7 @@ export const CustomModel = ({ title, children, ...rest }) => {
   const dispatch = useDispatch();
 
   const { showModal } = useSelector((state) => state.superHero);
-
+  
   return (
     <Modal
       show={showModal}
@@ -16,6 +16,7 @@ export const CustomModel = ({ title, children, ...rest }) => {
       aria-labelledby="contained-modal-title-vcenter"
       className="model"
       centered
+      onHide={() => dispatch(setShowModal(false))}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">{title}</Modal.Title>

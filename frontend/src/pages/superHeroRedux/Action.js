@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   deleteFavList,
   fetchSuperHero,
   getFavoriteList,
   saveFavorite,
+  updateFavoriteList,
 } from "../../helpers/axiosHelper";
 import { setFavorite, setSearchSuperHero } from "./Slice";
 
@@ -38,7 +38,18 @@ export const saveMySuperHero = (data) => async (dispatch) => {
 };
 
 export const deleteSuperHero = (id) => async (dispatch) => {
+  console.log(id);
   const result = await deleteFavList(id);
+  result.status === "success" && dispatch(fetchAllFavorite());
+  toast[result.status](result.message);
+};
+
+export const updateSuperHeroPowerstats = (data) => async (dispatch) => {
+  const requestPromise = updateFavoriteList(data);
+
+  toast.promise(requestPromise, { pending: "Please wait..." });
+
+  const result = await requestPromise;
   result.status === "success" && dispatch(fetchAllFavorite());
   toast[result.status](result.message);
 };

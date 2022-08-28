@@ -1,102 +1,58 @@
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useDispatch, useSelector } from "react-redux";
-import { setShowModal } from "../../pages/superHeroRedux/Slice";
-import { UpdatePowerState } from "../updatePowerState/UpdatePowerState";
+import { useSelector } from "react-redux";
 import { CustomModel } from "./CustomeModel";
+import { UpdatePowerState } from "../updatePowerState/UpdatePowerState";
 
-export const CharacterFeatures = ({ modelData, ...rest }) => {
-  const dispatch = useDispatch();
-  const { oneSuperHero } = useSelector((state) => state.superHero);
+export const CharacterFeatures = ({ isEditable }) => {
+  const { knowTheClick, oneSuperHero } = useSelector(
+    (state) => state.superHero
+  );
+  const powerstats = oneSuperHero.powerstats || {};
 
-  const Powerstatus = [
-    {
-      Intelligence: oneSuperHero.powerstats?.intelligence,
-    },
-    {
-      Strength: oneSuperHero.powerstats?.strength,
-    },
-    {
-      Speed: oneSuperHero.powerstats?.speed,
-    },
-    {
-      Durability: oneSuperHero.powerstats?.durability,
-    },
-    {
-      Power: oneSuperHero.powerstats?.power,
-    },
-    {
-      Combat: oneSuperHero.powerstats?.combat,
-    },
-  ];
+  const appearance = oneSuperHero.appearance || {};
 
-  const Appearance = [
-    { Gender: oneSuperHero.appearance?.gender },
-    { Race: oneSuperHero.appearance?.race },
-    { Height: oneSuperHero.appearance?.height[0] },
-    { Weight: oneSuperHero.appearance?.weight[0] },
-    { EyeColor: oneSuperHero.appearance?.eyeColor },
-    { HairColor: oneSuperHero.appearance?.hairColor },
-  ];
+  const biography = oneSuperHero.biography || {};
 
-  const biography = [
-    {
-      FullName: oneSuperHero.biography?.fullName,
-    },
-    {
-      BirthPlace: oneSuperHero.biography?.placeOfBirth,
-    },
-    {
-      FirstAppearance: oneSuperHero.biography?.firstAppearance,
-    },
-    {
-      Publisher: oneSuperHero.biography?.publisher,
-    },
-    {
-      Alignment: oneSuperHero.biography?.alignment,
-    },
-  ];
-
-  const work = [
-    {
-      Occupation: oneSuperHero.work?.occupation,
-    },
-    {
-      Base: oneSuperHero.work?.base,
-    },
-  ];
+  const work = oneSuperHero.work || {};
 
   return (
     <CustomModel>
-      <h4>{modelData}</h4>
-      {modelData === "powerstats" &&
-        Powerstatus.map((item, index) => (
-          <li key={index}>
-            <span className="fw-bold">{Object.keys(item)}: </span>
-            {Object.values(item).toString()}
-          </li>
-        ))}
-      {modelData === "appearance" &&
-        Appearance.map((item, index) => (
-          <li key={index}>
-            <span className="fw-bold">{Object.keys(item)}: </span>
-            {Object.values(item).toString()}
-          </li>
+      <h4>{knowTheClick}</h4>
+
+      {knowTheClick === "powerstats" &&
+        (isEditable ? (
+          <UpdatePowerState powerstats={powerstats} />
+        ) : (
+          Object.keys(powerstats).length &&
+          Object.keys(powerstats).map((key, index) => (
+            <li key={index}>
+              <span className="fw-bold">{key}: </span>
+              {powerstats[key]}
+            </li>
+          ))
         ))}
 
-      {modelData === "biography" &&
-        biography.map((item, index) => (
+      {knowTheClick === "appearance" &&
+        Object.keys(appearance).length &&
+        Object.keys(appearance).map((key, index) => (
           <li key={index}>
-            <span className="fw-bold">{Object.keys(item)}: </span>
-            {Object.values(item).toString()}
+            <span className="fw-bold">{key}: </span>
+            {appearance[key]}
           </li>
         ))}
-
-      {modelData === "work" &&
-        work.map((item, index) => (
+      {knowTheClick === "biography" &&
+        Object.keys(biography).length &&
+        Object.keys(biography).map((key, index) => (
           <li key={index}>
-            <span className="fw-bold">{Object.keys(item)}: </span>
-            {Object.values(item).toString()}
+            <span className="fw-bold">{key}: </span>
+            {biography[key]}
+          </li>
+        ))}
+      {knowTheClick === "work" &&
+        Object.keys(work).length &&
+        Object.keys(work).map((key, index) => (
+          <li key={index}>
+            <span className="fw-bold">{key}: </span>
+            {work[key]}
           </li>
         ))}
     </CustomModel>

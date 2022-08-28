@@ -25,7 +25,9 @@ export const RegisterForm = () => {
     }
 
     const { confirmPassword, ...rest } = formData;
-    const { status, message } = await registerUser(rest);
+    const requestPending = registerUser(rest);
+    toast.promise(requestPending, { pending: "Please wait..." });
+    const { status, message } = await requestPending;
 
     toast[status](message);
     if (status === "success") {

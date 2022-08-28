@@ -72,17 +72,31 @@ export const getFavoriteList = async () => {
   }
 };
 
-export const deleteFavList = async (id) => {
+export const updateFavoriteList = async (updateData) => {
   try {
     const { _id } = JSON.parse(window.sessionStorage.getItem("user"));
-
-    const { data } = await axios.delete(favoriteEP, {
+    const { data } = await axios.put(favoriteEP, updateData, {
       headers: {
         Authorization: _id,
       },
-      data: id,
     });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
 
+export const deleteFavList = async (id) => {
+  try {
+    const { _id } = JSON.parse(window.sessionStorage.getItem("user"));
+    const { data } = await axios.delete(favoriteEP + "/" + id, {
+      headers: {
+        Authorization: _id,
+      },
+    });
     return data;
   } catch (error) {
     return {

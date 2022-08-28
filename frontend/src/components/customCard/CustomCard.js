@@ -4,15 +4,10 @@ import { Button, Card } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import { CharacterFeatures } from "../model/characterFeatures";
 
-export const CustomCard = ({
-  modelData,
-  handelOnClick,
-  SaveToFavorite,
-  children,
-}) => {
+export const CustomCard = ({ handelOnClick, children }) => {
   return (
-    <Card style={{ height: "500px" }} className="customCard">
-      <CharacterFeatures modelData={modelData}></CharacterFeatures>
+    <Card className="customCard">
+      <CharacterFeatures />
       <Card.Img
         variant="top"
         src={children?.images?.sm}

@@ -2,10 +2,10 @@ import { useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
-import { loginAction } from "../../pages/logingRegisterRedux/Action";
+
 import { loginUser } from "../../helpers/axiosHelper";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "@mui/material";
+
 import { setUser } from "../../pages/logingRegisterRedux/Slice";
 import { toast } from "react-toastify";
 
@@ -62,6 +62,13 @@ export const LoginForm = () => {
           required
         />
       </Form.Group>
+      <Form.Text className="fs-6 text-light">
+        Please use the following login info or register to user your Own
+        Credentials:
+        <br />
+        Email: a@a.com <br />
+        Password: 123456 <br />
+      </Form.Text>
 
       <Button variant="primary" type="submit">
         Login

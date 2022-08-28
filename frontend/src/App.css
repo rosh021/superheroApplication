@@ -40,6 +40,7 @@ body {
   background-repeat: no-repeat;
   max-width: 100%;
   height: auto;
+  background-attachment: fixed;
 }
 
 .dashboardPage {
@@ -51,8 +52,11 @@ body {
 
 .customCard {
   color: black;
-
-  /* height: auto; */
+  margin-bottom: 2rem;
+}
+.cardMain {
+  display: flex;
+  justify-content: center;
 }
 
 .CardImage {
@@ -74,7 +78,9 @@ body {
 .favCard {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   min-height: 500px;
   margin-bottom: 20px;
   gap: 30px;
+  margin-top: 10px;
 }

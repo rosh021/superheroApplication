@@ -12,10 +12,10 @@ export const getFavById = (id) => {
   return FavSchema.find(id);
 };
 
-export const updateFav = ({ filter, ...obj }) => {
-  return FavSchema.findByIdAndUpdate(filter, obj, { new: true });
+export const updateFavById = (_id, powerstats) => {
+  return FavSchema.findByIdAndUpdate(_id, { powerstats }, { new: true });
 };
 
-export const deleteFavBYId = (id, userId) => {
-  return FavSchema.deleteMany({ _id: { $in: id }, userId });
+export const deleteFavBYId = (id) => {
+  return FavSchema.deleteOne(id);
 };

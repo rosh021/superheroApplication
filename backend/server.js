@@ -20,6 +20,9 @@ import favoriteRouter from "./src/routers/favoriteRouter.js";
 app.use("/api/v1/registerlogin", registerLoginRouter);
 app.use("/api/v1/favorite", favoriteRouter);
 
+import path from "path";
+app.use(express.static(path.resolve(__dirname, "./frontend/build")));
+
 app.get("/", (req, res) => {
   res.json({ message: "You are in server Endpoint" });
 });
