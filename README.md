@@ -8,7 +8,7 @@ Mongodb, Express, React, Node, Redux, Bootstrap
 
 ## How to Use
 
-- clone the repo `git clone ....`
+- clone the repo `git clone https://github.com/rosh021/superheroApplication.git`
 - run `cd ntd-api`
 - run `npm install`
 - run `npm start`

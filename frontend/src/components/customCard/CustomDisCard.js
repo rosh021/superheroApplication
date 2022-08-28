@@ -15,7 +15,7 @@ import {
   saveMySuperHero,
 } from "../../pages/superHeroRedux/Action";
 import { CharacterFeatures } from "../model/characterFeatures";
-import { CustomCard } from "./CustomDisplayCard";
+import { CustomCard } from "./CustomCard";
 
 export const CustomDisCard = () => {
   const dispatch = useDispatch();
@@ -45,5 +45,7 @@ export const CustomDisCard = () => {
     dispatch(saveMySuperHero(data));
   };
 
-  return <div>{oneSuperHero?.id && <CustomCard />}</div>;
+  return <div>{oneSuperHero?.id && <CustomCard>
+    
+    </CustomCard>}</div>;
 };

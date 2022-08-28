@@ -1,7 +1,10 @@
-import React from 'react'
+import React from "react";
+import { CustomCard } from "./CustomCard";
 
 export const CustomFavCard = () => {
   return (
-    <div>CustomFavCard</div>
-  )
-}
+    <div className="favCard">
+      <CustomCard />
+    </div>
+  );
+};

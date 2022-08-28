@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllFavorite } from "../../pages/superHeroRedux/Action";
+import { CustomFavCard } from "../customCard/CustomFavCard";
 
 export const Favorite = () => {
   const dispatch = useDispatch();
@@ -8,7 +9,7 @@ export const Favorite = () => {
   console.log(favorite[0].length);
 
   return (
-    <div>
+    <div className="mt-5">
       {favorite[0].length > 0 ? (
         <>
           <h1> {favorite?.length} Your Saved Favorite Super Hero Found.</h1>
@@ -21,7 +22,9 @@ export const Favorite = () => {
           can edit your super hero power Status
         </h1>
       )}
-      <div className="fav">{/* <CustomCard fun={isClicked} /> */}</div>
+      <div className="fav">
+        <CustomFavCard />
+      </div>
     </div>
   );
 };

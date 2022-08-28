@@ -66,7 +66,7 @@ body {
   color: black;
 }
 
-.fav {
-  /* display: flex; */
-  /* margin-top: 10px; */
+.favCard {
+  display: flex;
+  min-height: 500px;
 }
