@@ -13,6 +13,9 @@
     "start": "nodemon backend/server.js",
     "heroku-postbuild": " npm install --prefix frontend && npm run build --prefix frontend"
   },
+  "engines": {
+    "node": "16.13.2"
+  },
   "name": "backend",
   "version": "1.0.0",
   "main": "server.js",
