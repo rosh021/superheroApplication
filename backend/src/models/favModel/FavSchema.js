@@ -18,6 +18,7 @@ const favSchema = new mongoose.Schema(
     biography: { type: Object },
     work: { type: Object },
     connections: { type: Object },
+    images: { type: Object },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",

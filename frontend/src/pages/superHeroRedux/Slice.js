@@ -6,6 +6,7 @@ const initialState = {
   knowTheClick: [],
   showModal: false,
   favorite: [],
+  clickFromFavorite: [],
 };
 
 const searchSuperHeroSlice = createSlice({
@@ -27,6 +28,9 @@ const searchSuperHeroSlice = createSlice({
     setFavorite: (state, { payload }) => {
       state.favorite = payload;
     },
+    setKnowClickFromFavorite: (state, { payload }) => {
+      state.clickFromFavorite = payload;
+    },
   },
 });
 const { reducer, actions } = searchSuperHeroSlice;
@@ -36,6 +40,7 @@ export const {
   setShowModal,
   setKnowTheClick,
   setFavorite,
+  setKnowClickFromFavorite,
 } = actions;
 
 export default reducer;

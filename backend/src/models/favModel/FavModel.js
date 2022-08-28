@@ -16,6 +16,6 @@ export const updateFav = ({ filter, ...obj }) => {
   return FavSchema.findByIdAndUpdate(filter, obj, { new: true });
 };
 
-export const deleteFavBYId = (id) => {
-  return FavSchema.deleteOne(id);
+export const deleteFavBYId = (id, userId) => {
+  return FavSchema.deleteMany({ _id: { $in: id }, userId });
 };

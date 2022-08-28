@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
+  deleteFavList,
   fetchSuperHero,
   getFavoriteList,
   saveFavorite,
@@ -15,7 +16,7 @@ export const fetchAllSuperHero = () => async (dispatch) => {
 
 export const fetchAllFavorite = () => async (dispatch) => {
   const data = await getFavoriteList();
-  console.log(data);
+
   if (data.status === "success") {
     dispatch(setFavorite(data.result));
   }
@@ -28,9 +29,16 @@ export const saveMySuperHero = (data) => async (dispatch) => {
     alert("Please login first");
     return;
   }
+  console.log(data);
 
   const info = { ...data, userId: _id };
 
   const result = await saveFavorite(info);
   result.status === "success" && dispatch(fetchAllFavorite());
+};
+
+export const deleteSuperHero = (id) => async (dispatch) => {
+  const result = await deleteFavList(id);
+  result.status === "success" && dispatch(fetchAllFavorite());
+  toast[result.status](result.message);
 };

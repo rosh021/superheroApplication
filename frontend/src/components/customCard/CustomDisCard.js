@@ -19,11 +19,7 @@ import { CustomCard } from "./CustomCard";
 
 export const CustomDisCard = () => {
   const dispatch = useDispatch();
-
-  const { oneSuperHero, showModal, favorite } = useSelector(
-    (state) => state.superHero
-  );
-  console.log(favorite);
+  const { oneSuperHero, favorite } = useSelector((state) => state.superHero);
 
   const [modelData, setModelData] = useState({});
 
@@ -36,6 +32,7 @@ export const CustomDisCard = () => {
   };
 
   const SaveToFavorite = (data) => {
+    console.log(data);
     const objExist = favorite.filter((item) => item.id === data.id);
     if (objExist.length) {
       return toast.error("OOPS !! Already Added to Favorite");
@@ -45,7 +42,40 @@ export const CustomDisCard = () => {
     dispatch(saveMySuperHero(data));
   };
 
-  return <div>{oneSuperHero?.id && <CustomCard>
-    
-    </CustomCard>}</div>;
+  return (
+    <div>
+      <Card style={{ height: "500px" }} className="customCard">
+        <CharacterFeatures modelData={modelData}></CharacterFeatures>
+        <Card.Img
+          variant="top"
+          src={oneSuperHero?.images?.sm}
+          className="CardImage"
+        />
+        <Card.Body>
+          <Card.Title>{oneSuperHero?.name}</Card.Title>
+        </Card.Body>
+        <ListGroup className="list-group-flush">
+          <ListGroup.Item
+            className="link"
+            value="editPower"
+            onClick={handelOnClick}
+          >
+            powerstats
+          </ListGroup.Item>
+          <ListGroup.Item className="link" onClick={handelOnClick}>
+            appearance
+          </ListGroup.Item>
+          <ListGroup.Item className="link" onClick={handelOnClick}>
+            biography
+          </ListGroup.Item>
+          <ListGroup.Item className="link" onClick={handelOnClick}>
+            work
+          </ListGroup.Item>
+        </ListGroup>
+        <Button onClick={() => SaveToFavorite(oneSuperHero)}>
+          Add to Favorite
+        </Button>
+      </Card>
+    </div>
+  );
 };

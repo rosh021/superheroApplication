@@ -6,11 +6,10 @@ import { CustomFavCard } from "../customCard/CustomFavCard";
 export const Favorite = () => {
   const dispatch = useDispatch();
   const { favorite } = useSelector((state) => state.superHero);
-  console.log(favorite[0].length);
 
   return (
-    <div className="mt-5">
-      {favorite[0].length > 0 ? (
+    <div className="mt-5 favPage">
+      {favorite?.length > 0 ? (
         <>
           <h1> {favorite?.length} Your Saved Favorite Super Hero Found.</h1>
           <p> You can update the Power Status and Save it.</p>

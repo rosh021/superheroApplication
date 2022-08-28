@@ -12,29 +12,22 @@ import { CustomDisCard } from "../customCard/CustomDisCard";
 export const Dashboard = () => {
   const dispatch = useDispatch();
   const [inputData, setInputData] = useState("");
-  const { searchSuperHero } = useSelector((state) => state.superHero);
-
-  const searchForName = () => {
-    let result = searchSuperHero.map((item, i) => {
-      if (inputData === item.name) {
-        dispatch(setOneSuperHero(item));
-      }
-      // } else {
-      //   toast.error("Please Enter Valid Name");
-      // }
-    });
-
-    return result;
-  };
+  const { searchSuperHero, oneSuperHero } = useSelector(
+    (state) => state.superHero
+  );
 
   const handelOnChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
 
     setInputData(value);
   };
 
   const handelOnClick = () => {
-    searchForName();
+    searchSuperHero.map((item, i) => {
+      if (inputData === item.name) {
+        dispatch(setOneSuperHero(item));
+      }
+    });
   };
 
   return (
@@ -50,9 +43,11 @@ export const Dashboard = () => {
           />
           <SearchRoundedIcon className="search" onClick={handelOnClick} />
         </div>
-        <div className="cardMain">
-          <CustomDisCard />
-        </div>
+        {oneSuperHero.id && (
+          <div className="cardMain">
+            <CustomDisCard />
+          </div>
+        )}
       </div>
     </section>
   );

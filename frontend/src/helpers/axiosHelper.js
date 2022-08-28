@@ -71,3 +71,23 @@ export const getFavoriteList = async () => {
     };
   }
 };
+
+export const deleteFavList = async (id) => {
+  try {
+    const { _id } = JSON.parse(window.sessionStorage.getItem("user"));
+
+    const { data } = await axios.delete(favoriteEP, {
+      headers: {
+        Authorization: _id,
+      },
+      data: id,
+    });
+
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
+};
