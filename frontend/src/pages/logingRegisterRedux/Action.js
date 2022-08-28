@@ -8,7 +8,7 @@ export const loginAction = (obj) => async (dispatch) => {
   const { status, message, result } = data;
 
   if (status === "success") {
-    window.sessionStorage.setItem("user", JSON.stringify(data.result));
+    window.sessionStorage.setItem("user", JSON.stringify(result));
 
     dispatch(setUser(data));
   }

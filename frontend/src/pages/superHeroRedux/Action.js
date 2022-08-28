@@ -13,9 +13,17 @@ export const fetchAllSuperHero = () => async (dispatch) => {
   dispatch(setSearchSuperHero(result));
 };
 
+export const fetchAllFavorite = () => async (dispatch) => {
+  const data = await getFavoriteList();
+  console.log(data);
+  if (data.status === "success") {
+    dispatch(setFavorite(data.result));
+  }
+};
+
 export const saveMySuperHero = (data) => async (dispatch) => {
   const { _id } = JSON.parse(window.sessionStorage.getItem("user"));
-  console.log(_id);
+
   if (!_id) {
     alert("Please login first");
     return;
@@ -23,11 +31,6 @@ export const saveMySuperHero = (data) => async (dispatch) => {
 
   const info = { ...data, userId: _id };
 
-  const result = await setFavorite(info);
-
-  toast[result.status](result.message);
-};
-
-export const fetchAllFavorite = (id) => async (dispatch) => {
-  const { status, result } = await getFavoriteList(id);
+  const result = await saveFavorite(info);
+  result.status === "success" && dispatch(fetchAllFavorite());
 };

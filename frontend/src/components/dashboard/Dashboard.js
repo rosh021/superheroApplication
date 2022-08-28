@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import { useDispatch, useSelector } from "react-redux";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { CustomCard } from "../customCard/CustomCard";
+
 import { setOneSuperHero } from "../../pages/superHeroRedux/Slice";
 import { Alert } from "@mui/material";
 import { toast } from "react-toastify";
+import { CustomDisCard } from "../customCard/CustomDisCard";
 
 export const Dashboard = () => {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ export const Dashboard = () => {
           <SearchRoundedIcon className="search" onClick={handelOnClick} />
         </div>
         <div className="cardMain">
-          <CustomCard />
+          <CustomDisCard />
         </div>
       </div>
     </section>

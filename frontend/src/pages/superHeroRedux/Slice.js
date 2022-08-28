@@ -25,14 +25,7 @@ const searchSuperHeroSlice = createSlice({
       state.showModal = payload;
     },
     setFavorite: (state, { payload }) => {
-      const objExist = state.favorite.filter((item) => item._id === payload.id);
-      if (objExist.length) {
-        return;
-      }
-      const newSet = [...state.favorite, payload];
-
-      localStorage.setItem("favorites", JSON.stringify(newSet));
-      state.favorite = newSet;
+      state.favorite = payload;
     },
   },
 });

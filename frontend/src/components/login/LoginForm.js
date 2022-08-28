@@ -7,6 +7,7 @@ import { loginUser } from "../../helpers/axiosHelper";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { setUser } from "../../pages/logingRegisterRedux/Slice";
+import { toast } from "react-toastify";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,16 @@ export const LoginForm = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginAction(formData));
-    navigator("/dashboard");
+    const data = await loginUser(formData);
+
+    const { status, message, result } = data;
+
+    if (status === "success") {
+      window.sessionStorage.setItem("user", JSON.stringify(result));
+      navigator("/dashboard");
+      dispatch(setUser(data));
+    }
+    toast[status](message);
   };
 
   return (

@@ -25,5 +25,5 @@ Content-Type: application/json
 
 ### Store Favorite Super Hero
 
-POST http://localhost:8000/api/v1/favourite
+GET http://localhost:8000/api/v1/favorite
 

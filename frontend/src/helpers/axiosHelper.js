@@ -55,6 +55,19 @@ export const saveFavorite = (obj) => {
   return apiCall("post", favoriteEP, obj);
 };
 
-export const getFavoriteList = () => {
-  return apiCall("get", favoriteEP);
+export const getFavoriteList = async () => {
+  try {
+    const { _id } = JSON.parse(window.sessionStorage.getItem("user"));
+    const { data } = await axios.get(favoriteEP, {
+      headers: {
+        Authorization: _id,
+      },
+    });
+    return data;
+  } catch (error) {
+    return {
+      status: "error",
+      message: error.message,
+    };
+  }
 };

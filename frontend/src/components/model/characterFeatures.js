@@ -5,7 +5,7 @@ import { setShowModal } from "../../pages/superHeroRedux/Slice";
 import { UpdatePowerState } from "../updatePowerState/UpdatePowerState";
 import { CustomModel } from "./CustomeModel";
 
-export const CharacterFeatures = ({ modelData, ...rest }, isClicked) => {
+export const CharacterFeatures = ({ modelData, ...rest }) => {
   const dispatch = useDispatch();
   const { oneSuperHero } = useSelector((state) => state.superHero);
 
@@ -69,9 +69,13 @@ export const CharacterFeatures = ({ modelData, ...rest }, isClicked) => {
   return (
     <CustomModel>
       <h4>{modelData}</h4>
-      {modelData === "powerstats" && (
-        <UpdatePowerState Powerstatus={Powerstatus} />
-      )}
+      {modelData === "powerstats" &&
+        Powerstatus.map((item, index) => (
+          <li key={index}>
+            <span className="fw-bold">{Object.keys(item)}: </span>
+            {Object.values(item).toString()}
+          </li>
+        ))}
       {modelData === "appearance" &&
         Appearance.map((item, index) => (
           <li key={index}>

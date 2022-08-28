@@ -7,10 +7,12 @@ import {
 } from "../models/favModel/FavModel.js";
 const router = express.Router();
 
-router.get("/:id?", async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const result = id ? await getFavById(id) : await getFav();
+    const { authorization } = req.headers;
+    const filter = { userId: authorization };
+    const result = await getFavById(filter);
+    console.log(result);
 
     res.json({
       status: "success",

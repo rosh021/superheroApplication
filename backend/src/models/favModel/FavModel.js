@@ -4,12 +4,12 @@ export const saveFav = (obj) => {
   return FavSchema(obj).save();
 };
 
-export const getFav = () => {
-  return FavSchema.find();
+export const getFav = (filter) => {
+  return FavSchema.findOne(filter);
 };
 
 export const getFavById = (id) => {
-  return FavSchema.findById(id);
+  return FavSchema.find(id);
 };
 
 export const updateFav = ({ filter, ...obj }) => {

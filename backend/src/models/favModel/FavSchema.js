@@ -18,7 +18,13 @@ const favSchema = new mongoose.Schema(
     biography: { type: Object },
     work: { type: Object },
     connections: { type: Object },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
+
   {
     timestamps: true,
   }
