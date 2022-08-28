@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.5.3",
+    "path": "^0.12.7",
+    "uuid": "^8.3.2"
+  },
+  "scripts": {
+    "run dev": "nodemon backend/server.js",
+    "start": "nodemon backend/server.js",
+    "heroku-postbuild": " npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+  "type": "module",
+  "keywords": [],
+  "author": "Roshan",
+  "license": "ISC",
+  "description": "Super Hero Application"
+}
