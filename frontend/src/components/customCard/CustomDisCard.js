@@ -10,7 +10,10 @@ import {
 import { toast } from "react-toastify";
 import Card from "react-bootstrap/Card";
 
-import { saveMySuperHero } from "../../pages/superHeroRedux/Action";
+import {
+  deleteSuperHero,
+  saveMySuperHero,
+} from "../../pages/superHeroRedux/Action";
 import { CharacterFeatures } from "../model/characterFeatures";
 
 export const CustomDisCard = ({ oneSuperHero, isEditable }) => {
@@ -34,6 +37,10 @@ export const CustomDisCard = ({ oneSuperHero, isEditable }) => {
 
     toast.success("Added to your Favorite");
     dispatch(saveMySuperHero(data));
+  };
+
+  const handelOnDelete = (id) => {
+    dispatch(deleteSuperHero(id));
   };
 
   return (
@@ -69,9 +76,13 @@ export const CustomDisCard = ({ oneSuperHero, isEditable }) => {
               work
             </ListGroup.Item>
           </ListGroup>
-          {!isEditable && (
+          {!isEditable ? (
             <Button onClick={() => SaveToFavorite(oneSuperHero)}>
               Add to Favorite
+            </Button>
+          ) : (
+            <Button onClick={() => handelOnDelete(oneSuperHero.id)}>
+              Remove from Favorite
             </Button>
           )}
         </Card.Body>

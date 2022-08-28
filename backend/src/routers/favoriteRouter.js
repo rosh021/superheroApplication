@@ -72,6 +72,7 @@ router.put("/", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   console.log(req.params);
   try {
+    const { id } = req.params;
     const result = await deleteFavBYId(id);
 
     result?.deletedCount

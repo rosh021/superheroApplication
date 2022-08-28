@@ -38,7 +38,6 @@ export const saveMySuperHero = (data) => async (dispatch) => {
 };
 
 export const deleteSuperHero = (id) => async (dispatch) => {
-  console.log(id);
   const result = await deleteFavList(id);
   result.status === "success" && dispatch(fetchAllFavorite());
   toast[result.status](result.message);

@@ -16,6 +16,6 @@ export const updateFavById = (_id, powerstats) => {
   return FavSchema.findByIdAndUpdate(_id, { powerstats }, { new: true });
 };
 
-export const deleteFavBYId = (id) => {
+export const deleteFavBYId = ({ id }) => {
   return FavSchema.deleteOne(id);
 };

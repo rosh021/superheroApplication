@@ -22,10 +22,6 @@ export const CustomFavCard = ({ item }) => {
     dispatch(setShowModal(true));
   };
 
-  const handelOnDelete = (id) => {
-    dispatch(deleteSuperHero(id));
-  };
-
   return (
     <div className="favCard">
       <Card style={{ height: "500px" }} className="customCard">
@@ -52,9 +48,6 @@ export const CustomFavCard = ({ item }) => {
             work
           </ListGroup.Item>
         </ListGroup>
-        <Button onClick={() => handelOnDelete(item.id)}>
-          Remove from Favorite
-        </Button>
       </Card>
     </div>
   );
