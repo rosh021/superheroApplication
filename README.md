@@ -50,7 +50,7 @@ All the favorite api will follow: `{RootUrl}/favorite`
 | 1.  | `/`    | GET    | fetch all the favorite superhero saved from database   |
 | 2.  | `/`    | POST   | Send new favorite info to database                     |
 | 3.  | `/_id` | PATCH  | update favorite superhero, i.e powerstats of superhero |
-| 4.  | `/`    | DELETE | delete singe favorite superhero from database          |
+| 4.  | `/id`    | DELETE | delete singe favorite superhero from database          |
 
 
 ### Application pages 
